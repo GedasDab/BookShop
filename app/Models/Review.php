@@ -5,17 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Author extends Model
+class Review extends Model
 {
     use HasFactory;
 
+    protected $perPage = 1;
     protected $fillable = [
-        'author' 
+        'stars', 'comment' ,'book_id','author'
      ];
-
-
-    public function books()
-    {
-        return $this->belongsToMany(Book::class);
-    }
 }

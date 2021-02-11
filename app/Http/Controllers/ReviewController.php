@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Author;
 
-class AuthorController extends Controller
+use App\Models\Review;
+use Illuminate\Http\Request;
+
+class ReviewController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,7 @@ class AuthorController extends Controller
      */
     public function index()
     {
-        //
+        return 'this might work';
     }
 
     /**
@@ -33,18 +34,28 @@ class AuthorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $book_id, $user_id)
     {
-        //
+        if(  auth()->user()->id == $user_id ){
+            Review::create([
+                'author' => auth()->user()->name,
+                'book_id' => $book_id,
+                'stars' => $request->stars,
+                'comment' => $request->comment,
+            ]);
+            return redirect()->back();
+        }else{
+            return redirect()->back();
+        }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function show(Author $author)
+    public function show(Review $review)
     {
         //
     }
@@ -52,10 +63,10 @@ class AuthorController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function edit(Author $author)
+    public function edit(Review $review)
     {
         //
     }
@@ -64,10 +75,10 @@ class AuthorController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Author $author)
+    public function update(Request $request, Review $review)
     {
         //
     }
@@ -75,10 +86,10 @@ class AuthorController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Author $author)
+    public function destroy(Review $review)
     {
         //
     }

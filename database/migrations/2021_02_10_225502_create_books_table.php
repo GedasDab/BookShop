@@ -15,10 +15,14 @@ class CreateBooksTable extends Migration
     {
         Schema::create('books', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('review_id')->nullable();
+            $table->foreignId('user_id');
             $table->string('title');
-            $table->string('cover');
-            $table->text('description');
-            $table->string('check');
+            $table->string('description');
+            $table->double('price');
+            $table->string('picture');
+            $table->boolean('approved')->default(false);
+            $table->unsignedBigInteger('discount')->default(0);
             $table->timestamps();
         });
     }

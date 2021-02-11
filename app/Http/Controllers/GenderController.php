@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Gender;
 use Illuminate\Http\Request;
-use App\Models\Author;
 
-class AuthorController extends Controller
+class GenderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class AuthorController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Gender  $gender
      * @return \Illuminate\Http\Response
      */
-    public function show(Author $author)
+    public function show(Gender $gender)
     {
         //
     }
@@ -52,10 +52,10 @@ class AuthorController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Gender  $gender
      * @return \Illuminate\Http\Response
      */
-    public function edit(Author $author)
+    public function edit(Gender $gender)
     {
         //
     }
@@ -64,10 +64,10 @@ class AuthorController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Gender  $gender
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Author $author)
+    public function update(Request $request, Gender $gender)
     {
         //
     }
@@ -75,10 +75,10 @@ class AuthorController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Gender  $gender
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Author $author)
+    public function destroy(Gender $gender)
     {
         //
     }

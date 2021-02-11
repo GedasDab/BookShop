@@ -9,19 +9,20 @@ use Illuminate\Database\Eloquent\Model;
 class Book extends Model
 {
     use HasFactory;
-
     protected $fillable = [
-        'user_id','title', 'cover', 'description',
-    ];
-
-
-    public function authors(){
-        return $this->belongstoMany(Author::class, 'book_author', 
-        'book_id', 'author_id')
-        ->withTimestamps();
-    }
-
-    public function created_at_difference(){
-           return Carbon::createFromTimestamp(strtotime($this->created_at))->diff(Carbon::now())->days;
-      } 
+        'review_id', 'user_id' ,'title', 'description','price', 'discount', 'author_id', 'picture'
+     ];
+ 
+     public function reviews()
+     {
+         return $this->hasMany(Review::class);
+     }
+     public function genders()
+     {
+         return $this->belongsToMany(Gender::class);
+     }
+     public function authors()
+     {
+         return $this->belongsToMany(Author::class);
+     }
 }
